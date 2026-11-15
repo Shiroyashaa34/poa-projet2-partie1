@@ -61,3 +61,27 @@ class Joss(TitForTat):
         if coup == "C" and rng.random() < 0.1:
             return "D"
         return coup
+
+class Grim(Strategie):
+    """Coopère tant que l'adversaire n'a jamais trahi, puis trahit pour toujours."""
+    nom = "GRIM"
+
+    def jouer(self, mes_coups, coups_adv, rng):
+        if "D" in coups_adv:
+            return "D"
+        return "C"
+
+
+class Pavlov(Strategie):
+    """C au premier tour. Garde son coup s'il a rapporté 3 ou 5, change sinon."""
+    nom = "PAVLOV"
+
+    def jouer(self, mes_coups, coups_adv, rng):
+        if not mes_coups:
+            return "C"
+        # 3 ou 5 points = les deux ont joué pareil en coopérant, ou j'ai trahi un coopérateur
+        if (mes_coups[-1], coups_adv[-1]) in [("C", "C"), ("D", "C")]:
+            return mes_coups[-1]
+        if mes_coups[-1] == "C":
+            return "D"
+        return "C"
