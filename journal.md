@@ -20,6 +20,12 @@ Chaque paire de stratégies joue 5 parties de 200 tours, comme dans le tournoi d
 
 **TIT-FOR-TAT** vient aussi du cours, c'est celle qui a gagné le tournoi d'Axelrod en 1980 : elle commence par C puis copie le dernier coup de l'adversaire. Je m'attends à ce qu'elle marche bien contre les stratégies qui coopèrent, et contre ALL-D elle ne se fait avoir qu'une fois. Par contre elle ne peut jamais battre son adversaire en duel, au mieux elle fait égalité.
 
+**RANDOM** vient du cours : elle joue C ou D au hasard, une chance sur deux. Elle sert de témoin, pour voir si les autres font mieux que le hasard. Je pense qu'elle va finir dernière, parce qu'elle ne punit jamais et ne récompense jamais, donc tout le monde peut l'exploiter, surtout ALL-D.
+
+**TESTER** vient du cours : elle commence par D pour tester l'adversaire. Si l'adversaire riposte, elle passe en TIT-FOR-TAT, sinon elle répète C, C, D pour l'exploiter. La diapo ne dit pas exactement ce que veut dire "riposter", j'ai pris "l'adversaire a joué D au moins une fois". Je m'attends à ce qu'elle profite des stratégies naïves, mais contre TIT-FOR-TAT son D du premier tour risque de déclencher des représailles.
+
+**JOSS** vient du cours : c'est TIT-FOR-TAT, mais une fois sur dix elle remplace son C par un D. Dans le code, elle hérite de TIT-FOR-TAT et ne fait que modifier son coup. Je pense qu'elle gagne un peu contre ceux qui ne punissent pas, mais contre TIT-FOR-TAT chaque trahison va lancer un échange de représailles qui coûte des points aux deux.
+
 
 ## Suivi
 
@@ -39,6 +45,8 @@ J'ai hésité à faire des fonctions à la place des classes, vu que l'historiqu
 Pour vérifier le moteur, je refais l'exemple du cours : TFT contre ALL-D sur 10 tours. Je trouve 18 pour TFT et 23 pour ALL-D, pareil que la diapo.
 
 ![test moteur](captures/test_moteur.png)
+
+J'ai ajouté les 3 stratégies du cours qui manquaient : RANDOM, TESTER et JOSS (voir le détail dans la section Stratégies).
 
 ## Impasses
 
