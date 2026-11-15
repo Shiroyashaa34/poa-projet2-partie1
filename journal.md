@@ -106,6 +106,13 @@ En résumé, à l'étape 1 TFT perdait parce qu'elle n'avait personne avec qui c
 
 #### Étape 3 : prédictions (écrites avant de lancer)
 
+Bruit : je pense que les gentilles vont perdre pas mal de points entre elles. Avec TFT, une erreur suffit pour lancer un écho de représailles, comme dans la diapo du cours. GRIM devrait chuter le plus : avec 5 % d'erreurs, il y aura vite une trahison par accident, et après elle trahit pour toujours, même contre TFT et PAVLOV. Je pense qu'elle perd sa 1re place. PAVLOV devrait mieux tenir, parce qu'après un D/D elle repasse à C toute seule. ALL-D trahit de toute façon, donc le bruit la gêne peu, je pense qu'elle remonte.
+ 
+Classement que je prévois avec le bruit : 1. ALL-D, 2. PAVLOV, 3. TFT, 4. GRIM, 5. TESTER, 6. JOSS, 7. RANDOM.
+ 
+Horizon inconnu : je pense que le classement reste presque le même qu'à l'étape 2. Aucune de mes stratégies ne compte les tours, donc elles jouent pareil, seule la durée des parties change. Les scores vont bouger un peu, et les places serrées comme TFT et ALL-D (moins de 50 points d'écart) pourraient s'inverser.
+ 
+Classement que je prévois avec l'horizon inconnu : le même qu'à l'étape 2 (1. GRIM, 2. TFT, 3. ALL-D, 4. PAVLOV, 5. TESTER, 6. JOSS, 7. RANDOM), avec peut-être TFT et ALL-D qui s'échangent.
 
 ## Impasses
 
