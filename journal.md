@@ -62,8 +62,14 @@ En regardant les scores match par match, je vois qu'ALL-D gagne surtout grâce �
 
 La différence avec 1980 vient de la population. Ici TFT est la seule stratégie qui ne trahit jamais en premier, donc elle n'a personne avec qui coopérer à 3 par tour. En plus, TESTER et JOSS la piègent dans des échanges de représailles : contre TESTER elle fait 2500 au lieu de 3000, parce que TESTER commence par D, TFT riposte, et les deux se renvoient la trahison toute la partie. En 1980 il y avait 14 programmes, et beaucoup étaient "gentils", c'est avec eux que TFT faisait ses points. C'est ce que dit le cours : TFT marche seulement si elle rencontre assez de stratégies qui pensent comme elle.
 
+### Dimanche 15/11
+
+Pour vérifier, j'ai relancé le tournoi sans RANDOM (ligne en commentaire dans `etape1.py`). TFT passe 1re et ALL-D tombe dernière : l'hypothèse est confirmée, ALL-D gagnait grâce aux points pris contre RANDOM. TFT ne gagne que de 21 points devant TESTER, donc ça reste serré.
+
+![sans RANDOM](captures/etape1_sansrandom.png)
+
 
 ## Impasses
 
 Les scores sont rangés par nom de stratégie, donc si je mets deux fois la même stratégie dans un tournoi, leurs scores s'additionnent (pas grave pour l'instant, j'ai une seule instance de chaque).
-Tester le tournoi de base sans random pour confirmer que ALL-D ne gagne plus ?
+Tester le tournoi de base sans RANDOM pour confirmer que ALL-D ne gagne plus ? Hypothèse confirmé plus haut.
