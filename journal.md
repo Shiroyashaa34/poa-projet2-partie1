@@ -80,6 +80,22 @@ Pour vérifier, j'ai relancé le tournoi sans RANDOM (ligne en commentaire dans 
 
 J'ajoute 2 stratégies qui ne sont pas dans le cours : GRIM et PAVLOV (voir le détail dans la section Stratégies). Je les ai choisies parce qu'elles sont toutes les deux "gentilles" comme TFT, mais avec deux idées opposées : GRIM ne pardonne jamais, PAVLOV se corrige selon ce que son coup lui a rapporté. D'après ce que j'ai vu à l'étape 1, avoir plus de stratégies gentilles devrait aider TFT, puisqu'elle aura enfin des partenaires avec qui coopérer.
 
+J'ai lancé le tournoi avec les 7 stratégies, toujours avec la graine 42.
+
+![Classement étape 2](captures/etape2.png)
+
+C'est GRIM qui gagne, TFT est 2e et ALL-D tombe 3e. Par rapport à l'étape 1, TFT passe de 3e à 2e et ALL-D perd la 1re place.
+
+![Résultat match par match étape 2](captures/detail_etape2.png)
+
+Comme je l'avais prévu, ajouter des stratégies gentilles aide TFT : contre GRIM et contre PAVLOV elle fait 3000, c'est-à-dire qu'elles coopèrent tout le long, à 3 par tour. Tous les matchs entre TFT, GRIM et PAVLOV finissent à 3000 des deux côtés.
+
+Par contre je me suis trompé sur GRIM. Je pensais que sa rancune allait lui faire perdre beaucoup de points contre RANDOM, mais c'est l'inverse, c'est même son meilleur match (3457). Dès que RANDOM trahit une fois, GRIM trahit pour toujours, donc elle joue comme ALL-D et prend 5 à chaque fois que RANDOM joue C. TFT, lui, continue de copier RANDOM et lui pardonne, il ne fait que 2476. C'est presque toute la différence entre GRIM et TFT au classement. Donc ne jamais pardonner, ici, ça paye contre une stratégie qui trahit au hasard.
+
+Pour PAVLOV, j'avais raison contre ALL-D : elle alterne C et D, prend 0 puis 2, donc 1 par tour en moyenne (1000 points). Mais je n'avais pas vu que ça profite aussi à ALL-D, qui fait 3500 contre elle, son meilleur match avec celui contre RANDOM. C'est ce qui permet à ALL-D de rester 3e alors qu'elle fait environ 2000 contre tous les autres.
+
+En résumé, à l'étape 1 TFT perdait parce qu'elle n'avait personne avec qui coopérer. Avec deux gentilles en plus, les stratégies qui coopèrent passent devant, mais celle qui gagne est celle qui sait aussi punir pour de bon ceux qui trahissent (GRIM).
+
 ## Impasses
 
 Les scores sont rangés par nom de stratégie, donc si je mets deux fois la même stratégie dans un tournoi, leurs scores s'additionnent (pas grave pour l'instant, j'ai une seule instance de chaque).
