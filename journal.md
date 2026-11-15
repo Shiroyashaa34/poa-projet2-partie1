@@ -26,6 +26,10 @@ Chaque paire de stratégies joue 5 parties de 200 tours, comme dans le tournoi d
 
 **JOSS** vient du cours : c'est TIT-FOR-TAT, mais une fois sur dix elle remplace son C par un D. Dans le code, elle hérite de TIT-FOR-TAT et ne fait que modifier son coup. Je pense qu'elle gagne un peu contre ceux qui ne punissent pas, mais contre TIT-FOR-TAT chaque trahison va lancer un échange de représailles qui coûte des points aux deux.
 
+**GRIM** ne vient pas du cours, c'est la stratégie de l'économiste Friedman (1971)(aussi appelée "Grim Trigger"). Elle coopère tant que l'adversaire n'a jamais trahi, mais dès la première trahison elle trahit pour toujours, sans jamais pardonner. Je pense qu'elle va bien marcher contre TIT-FOR-TAT, avec qui elle coopérera tout le long. Contre ALL-D, elle se fait avoir une seule fois, comme TFT. Par contre, contre JOSS et RANDOM, une seule trahison au hasard suffit pour qu'elle trahisse jusqu'à la fin, donc elle risque de perdre beaucoup de points à cause de sa rancune.
+
+**PAVLOV** ne vient pas du cours non plus, elle a été rendue célèbre par Nowak et Sigmund (1993) (aussi appelée "win-stay, lose-shift"). Elle commence par C, puis si son dernier coup lui a rapporté 3 ou 5 elle le rejoue, sinon elle change. Je pense qu'elle va bien coopérer avec TFT et GRIM. Par contre, contre ALL-D elle va alterner : elle prend 0, passe à D, prend 2, repasse à C, et ainsi de suite, donc elle va perdre des points en revenant tout le temps coopérer. Contre RANDOM, quand elle trahit un C elle garde D, donc elle peut l'exploiter un peu.
+
 
 ## Suivi
 
@@ -72,7 +76,9 @@ Pour vérifier, j'ai relancé le tournoi sans RANDOM (ligne en commentaire dans 
 
 ![sans RANDOM](captures/etape1_sansrandom.png)
 
-#### Etape 2
+#### Étape 2
+
+J'ajoute 2 stratégies qui ne sont pas dans le cours : GRIM et PAVLOV (voir le détail dans la section Stratégies). Je les ai choisies parce qu'elles sont toutes les deux "gentilles" comme TFT, mais avec deux idées opposées : GRIM ne pardonne jamais, PAVLOV se corrige selon ce que son coup lui a rapporté. D'après ce que j'ai vu à l'étape 1, avoir plus de stratégies gentilles devrait aider TFT, puisqu'elle aura enfin des partenaires avec qui coopérer.
 
 ## Impasses
 
