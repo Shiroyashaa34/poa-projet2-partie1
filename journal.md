@@ -114,6 +114,25 @@ Horizon inconnu : je pense que le classement reste presque le même qu'à l'éta
  
 Classement que je prévois avec l'horizon inconnu : le même qu'à l'étape 2 (1. GRIM, 2. TFT, 3. ALL-D, 4. PAVLOV, 5. TESTER, 6. JOSS, 7. RANDOM), avec peut-être TFT et ALL-D qui s'échangent.
 
+#### Étape 3 : résultat avec le bruit
+ 
+J'ai ajouté le bruit dans le moteur : après que chaque stratégie a choisi son coup, il a 5 % de chances d'être inversé. Le coup inversé est celui qui est noté dans l'historique, donc l'adversaire voit une trahison sans savoir que c'est une erreur. Avec un bruit à 0, les étapes 1 et 2 donnent toujours les mêmes scores, donc je n'ai rien cassé.
+ 
+![Classement étape 3 bruit](captures/etape3_bruit.png)
+ 
+ 
+Résultat des prédicitipons : j'ai 3 places justes sur 7. Mes deux plus grosses erreurs sont sur PAVLOV et GRIM.
+ 
+![Résultat match par match étape 3 bruit](captures/detail_etape3_bruit.png)
+ 
+Ce que j'avais bien vu : ALL-D reste 1re, le bruit ne la gêne pas puisqu'elle trahit de toute façon. Elle gagne même un peu plus contre tout le monde, parce que les autres coopèrent parfois par erreur (2176 contre TFT au lieu de 2015). Et TFT perd des points à cause des échos : contre GRIM il fait 2003 au lieu de 3000, contre PAVLOV 2498 au lieu de 3000.
+ 
+GRIM : j'avais raison sur le mécanisme, avec le bruit il y a vite une erreur et après elle trahit pour toujours. Mais je n'avais pas vu la conséquence : du coup elle joue comme ALL-D, et ALL-D est 1re. Elle exploite PAVLOV (3347) et RANDOM (3392) presque autant qu'ALL-D (3401 et 3422). C'est la même chose qu'à l'étape 2 : sa rancune, qui devait la faire chuter, la sauve.
+ 
+PAVLOV : c'est ma plus grosse erreur, je la voyais 2e et elle a fini dernière. C'est vrai qu'après un D/D elle repasse à C toute seule, mais ça ne sert vraiment que contre une autre PAVLOV, et il n'y en a pas puisqu'une stratégie ne joue pas contre elle-même. Contre les autres, revenir à C la fait exploiter. Contre ALL-D elle fait toujours 0, 2, 0, 2 (1141 points). Et contre GRIM, après la première erreur GRIM trahit pour toujours, donc PAVLOV retombe dans le même cycle (1282 points, alors qu'à l'étape 2 c'était 3000). J'avais pensé à sa règle, mais pas à qui elle allait rencontrer.
+ 
+En résumé, avec du bruit, les stratégies qui pardonnent ou qui reviennent coopérer perdent, et celles qui trahissent beaucoup (ALL-D, et GRIM qui devient une ALL-D) gagnent.
+
 ## Impasses
 
 Les scores sont rangés par nom de stratégie, donc si je mets deux fois la même stratégie dans un tournoi, leurs scores s'additionnent (pas grave pour l'instant, j'ai une seule instance de chaque).
