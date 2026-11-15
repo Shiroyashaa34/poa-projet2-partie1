@@ -10,23 +10,36 @@ Coder un tournoi de dilemme du prisonnier itéré, faire jouer des stratégies e
 
 D'abord le moteur et les 5 stratégies du cours (ALL-D, RANDOM, TIT-FOR-TAT, TESTER, JOSS), pour voir si TIT-FOR-TAT gagne. Ensuite j'ajoute 2 stratégies hors cours et je compare. Enfin je modifie 2 règles du tournoi, en notant ma prédiction avant de lancer.
 
-## Méthode
-
-- Tester le moteur sur un exemple du cours avant le vrai tournoi
-- Graine aléatoire fixée
-- Journal mis à jour à chaque avancée
-
 ## Protocole
+
+Chaque paire de stratégies joue 5 parties de 200 tours, comme dans le tournoi d'Axelrod du cours, avec les gains du sujet (CC = 3/3, CD = 0/5, DC = 5/0, DD = 2/2). Une stratégie ne joue pas contre elle-même, parce que le sujet dit "chaque autre". La graine aléatoire est fixée à 42 pour que les résultats soient les mêmes à chaque lancement.
 
 ## Stratégies
 
-## Étape 1 : tournoi de base
+**ALL-D** vient du cours : elle joue toujours D, c'est la stratégie "rationnelle" de la récurrence à rebours. Je pense qu'elle va bien s'en sortir contre ceux qui coopèrent sans jamais punir, comme RANDOM, puisqu'elle prend 5 à chaque fois que l'autre joue C. Par contre contre ceux qui ripostent, elle gagne le premier tour puis ne prend plus que 2 par tour.
 
-## Étape 2 : nouvelles stratégies
+**TIT-FOR-TAT** vient aussi du cours, c'est celle qui a gagné le tournoi d'Axelrod en 1980 : elle commence par C puis copie le dernier coup de l'adversaire. Je m'attends à ce qu'elle marche bien contre les stratégies qui coopèrent, et contre ALL-D elle ne se fait avoir qu'une fois. Par contre elle ne peut jamais battre son adversaire en duel, au mieux elle fait égalité.
 
-## Étape 3 : modifications du tournoi
-### Prédictions
+
+## Suivi
+
+### Vendredi 13/11
+
+J'ai lu le sujet et le cours 4. J'ai créé le dépôt, le README et le journal.
+Pour le langage, j'ai choisi Python (plus a l'aise).
+
+J'ai écrit le moteur : une fonction `partie` qui fait jouer deux stratégies pendant un nombre de tours donné, et une fonction `tournoi` qui fait jouer tout le monde contre tout le monde. J'ai fixé les paramètres du tournoi au passage (voir protocole).
+
+### Samedi 14/11
+
+J'ai fait une classe par stratégie avec une méthode `jouer(mes_coups, coups_adv, rng)` qui renvoie C ou D. J'ai mis ALL-D et TIT-FOR-TAT.
+
+J'ai hésité à faire des fonctions à la place des classes, vu que l'historique est donné à chaque tour, les stratégies n'ont pas besoin de garder un état. Mais j'ai quand meme décider de garder les classes : le nom est rangé avec la stratégie (et en prévison JOSS pourra hériter de TFT).
+
+Pour vérifier le moteur, je refais l'exemple du cours : TFT contre ALL-D sur 10 tours. Je trouve 18 pour TFT et 23 pour ALL-D, pareil que la diapo.
+
+![test moteur](captures/test_moteur.png)
 
 ## Impasses
 
-## Suivi
+Les scores sont rangés par nom de stratégie, donc si je mets deux fois la même stratégie dans un tournoi, leurs scores s'additionnent (pas grave pour l'instant, j'ai une seule instance de chaque).
