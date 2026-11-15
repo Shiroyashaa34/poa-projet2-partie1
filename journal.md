@@ -48,6 +48,22 @@ Pour vérifier le moteur, je refais l'exemple du cours : TFT contre ALL-D sur 10
 
 J'ai ajouté les 3 stratégies du cours qui manquaient : RANDOM, TESTER et JOSS (voir le détail dans la section Stratégies).
 
+J'ai lancé le tournoi avec les 5 stratégies et une graine 42. Je l'ai lancé deux fois et j'ai exactement le même classement, donc la graine marche.
+
+![Classement étape 1](captures/etape1.png)
+
+
+TIT-FOR-TAT gagne-t-il ? 
+Non, il finit 3e. C'est ALL-D qui gagne, TESTER est 2e juste devant TFT (22 points d'écart, presque rien).
+
+![détail étape 1](captures/detail_etape1.png)
+
+En regardant les scores match par match, je vois qu'ALL-D gagne surtout grâce à RANDOM : contre les autres elle fait environ 2 par tour, mais contre RANDOM elle prend 5 une fois sur deux (3458 points contre RANDOM, environ 2000 contre chacun des autres). Mon hypothèse : sans RANDOM, ALL-D ne gagnerait plus.
+
+La différence avec 1980 vient de la population. Ici TFT est la seule stratégie qui ne trahit jamais en premier, donc elle n'a personne avec qui coopérer à 3 par tour. En plus, TESTER et JOSS la piègent dans des échanges de représailles : contre TESTER elle fait 2500 au lieu de 3000, parce que TESTER commence par D, TFT riposte, et les deux se renvoient la trahison toute la partie. En 1980 il y avait 14 programmes, et beaucoup étaient "gentils", c'est avec eux que TFT faisait ses points. C'est ce que dit le cours : TFT marche seulement si elle rencontre assez de stratégies qui pensent comme elle.
+
+
 ## Impasses
 
 Les scores sont rangés par nom de stratégie, donc si je mets deux fois la même stratégie dans un tournoi, leurs scores s'additionnent (pas grave pour l'instant, j'ai une seule instance de chaque).
+Tester le tournoi de base sans random pour confirmer que ALL-D ne gagne plus ?
