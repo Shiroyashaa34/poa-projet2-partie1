@@ -14,6 +14,14 @@ D'abord le moteur et les 5 stratégies du cours (ALL-D, RANDOM, TIT-FOR-TAT, TES
 
 Chaque paire de stratégies joue 5 parties de 200 tours, comme dans le tournoi d'Axelrod du cours, avec les gains du sujet (CC = 3/3, CD = 0/5, DC = 5/0, DD = 2/2). Une stratégie ne joue pas contre elle-même, parce que le sujet dit "chaque autre". La graine aléatoire est fixée à 42 pour que les résultats soient les mêmes à chaque lancement.
 
+Pour l'étape 3, je garde les 7 stratégies de l'étape 2, la même graine et je teste deux modifs, une à la fois :
+- du bruit : chaque coup a 5 % de chances d'être inversé. Je le prends parce que dans le cours on voit que TFT gère mal les erreurs, et je veux voir ce que font GRIM et PAVLOV.
+- un horizon inconnu : après chaque tour, la partie continue avec une proba de 0,995. Ça fait 200 tours en moyenne, comme avant, donc je peux comparer. Je le prends à cause de la récurrence à rebours du cours.
+
+Je fais les deux modifs séparément, pour pouvoir comparer chaque résultat au classement de l'étape 2 et savoir quel effet vient de quelle modif.
+
+Je ne prends pas la sélection, à cause de mon problème de scores rangés par nom (voir Impasses).
+
 ## Stratégies
 
 **ALL-D** vient du cours : elle joue toujours D, c'est la stratégie "rationnelle" de la récurrence à rebours. Je pense qu'elle va bien s'en sortir contre ceux qui coopèrent sans jamais punir, comme RANDOM, puisqu'elle prend 5 à chaque fois que l'autre joue C. Par contre contre ceux qui ripostent, elle gagne le premier tour puis ne prend plus que 2 par tour.
@@ -95,6 +103,9 @@ Par contre je me suis trompé sur GRIM. Je pensais que sa rancune allait lui fai
 Pour PAVLOV, j'avais raison contre ALL-D : elle alterne C et D, prend 0 puis 2, donc 1 par tour en moyenne (1000 points). Mais je n'avais pas vu que ça profite aussi à ALL-D, qui fait 3500 contre elle, son meilleur match avec celui contre RANDOM. C'est ce qui permet à ALL-D de rester 3e alors qu'elle fait environ 2000 contre tous les autres.
 
 En résumé, à l'étape 1 TFT perdait parce qu'elle n'avait personne avec qui coopérer. Avec deux gentilles en plus, les stratégies qui coopèrent passent devant, mais celle qui gagne est celle qui sait aussi punir pour de bon ceux qui trahissent (GRIM).
+
+#### Étape 3 : prédictions (écrites avant de lancer)
+
 
 ## Impasses
 
