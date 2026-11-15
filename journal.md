@@ -1,6 +1,6 @@
 # Journal de bord - Projet 2 (partie 1)
 
-BENENES Nassim --- HAI716I, tournoi d'Axelrod modifié.
+BENENES Nassim — HAI716I, tournoi d'Axelrod modifié.
 
 ## Objectif
 
