@@ -133,6 +133,24 @@ PAVLOV : c'est ma plus grosse erreur, je la voyais 2e et elle a fini dernière. 
  
 En résumé, avec du bruit, les stratégies qui pardonnent ou qui reviennent coopérer perdent, et celles qui trahissent beaucoup (ALL-D, et GRIM qui devient une ALL-D) gagnent.
 
+#### Étape 3 : résultat avec l'horizon inconnu
+ 
+J'ai ajouté un paramètre au moteur : au lieu de jouer 200 tours, après chaque tour la partie continue avec une proba de 0,995. Ni les stratégies ni le moteur ne savent quand la partie va finir. Sans ce paramètre, les étapes 1, 2 et le bruit donnent toujours les mêmes scores.
+ 
+![Classement étape 3 horizon](captures/etape3_horizon.png)
+ 
+Résultat : TFT gagne, TESTER est 2e et ALL-D finit dernière. Je m'étais trompé, je pensais que le classement resterait presque le même qu'à l'étape 2, alors qu'ALL-D passe de 3e à 7e et TESTER de 5e à 2e.
+ 
+![Résultat match par match étape 3 horizon](captures/detail_etape3_horizon.png)
+ 
+En regardant le détail, je vois que ce n'est pas le comportement des stratégies qui a changé, c'est la durée des matchs. Par exemple TFT contre GRIM fait 3990 : elles coopèrent tout le long, donc 3 points par tour, ce qui veut dire que le match a duré 1330 tours au lieu de 1000. À l'inverse, ALL-D contre RANDOM ne fait que 1495, alors que c'était son meilleur match à l'étape 2 (3458) : le match a été très court.
+ 
+Avec une chance sur 200 de s'arrêter à chaque tour, une partie peut durer 2 tours comme 800. En moyenne ça fait bien 200, mais avec seulement 5 parties par match le hasard ne s'équilibre pas. Une stratégie qui tombe sur des matchs longs marque plus de points, juste parce qu'elle joue plus. Ici, TFT a eu des matchs longs et ALL-D des matchs courts.
+ 
+Donc ma prédiction était juste sur le fond : aucune stratégie ne compte les tours, elles jouent exactement pareil. Mais j'ai sous-estimé l'effet du hasard sur la durée, qui fausse le classement par score total. Pour comparer vraiment avec l'étape 2, il faudrait regarder les points par tour, ou faire beaucoup plus de parties par match.
+ 
+Sur la récurrence à rebours : elle ne change rien ici, parce que mes stratégies ne raisonnent pas sur la fin de la partie. Même avec 200 tours connus, aucune ne trahissait au dernier tour. L'horizon inconnu compte pour des joueurs qui calculent, pas pour des règles fixes comme les miennes.
+
 ## Impasses
 
 Les scores sont rangés par nom de stratégie, donc si je mets deux fois la même stratégie dans un tournoi, leurs scores s'additionnent (pas grave pour l'instant, j'ai une seule instance de chaque).
