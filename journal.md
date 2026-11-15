@@ -31,8 +31,12 @@ Chaque paire de stratégies joue 5 parties de 200 tours, comme dans le tournoi d
 
 ### Vendredi 13/11
 
+#### Compréhension du sujet
+
 J'ai lu le sujet et le cours 4. J'ai créé le dépôt, le README et le journal.
-Pour le langage, j'ai choisi Python (plus a l'aise).
+Pour le langage, j'ai choisi Python (plus à l'aise).
+
+#### Etape 1
 
 J'ai écrit le moteur : une fonction `partie` qui fait jouer deux stratégies pendant un nombre de tours donné, et une fonction `tournoi` qui fait jouer tout le monde contre tout le monde. J'ai fixé les paramètres du tournoi au passage (voir protocole).
 
@@ -40,11 +44,11 @@ J'ai écrit le moteur : une fonction `partie` qui fait jouer deux stratégies pe
 
 J'ai fait une classe par stratégie avec une méthode `jouer(mes_coups, coups_adv, rng)` qui renvoie C ou D. J'ai mis ALL-D et TIT-FOR-TAT.
 
-J'ai hésité à faire des fonctions à la place des classes, vu que l'historique est donné à chaque tour, les stratégies n'ont pas besoin de garder un état. Mais j'ai quand meme décider de garder les classes : le nom est rangé avec la stratégie (et en prévison JOSS pourra hériter de TFT).
+J'ai hésité à faire des fonctions à la place des classes, vu que l'historique est donné à chaque tour, les stratégies n'ont pas besoin de garder un état. Mais j'ai quand meme décider de garder les classes : le nom est rangé avec la stratégie (et en prévision JOSS pourra hériter de TFT).
 
 Pour vérifier le moteur, je refais l'exemple du cours : TFT contre ALL-D sur 10 tours. Je trouve 18 pour TFT et 23 pour ALL-D, pareil que la diapo.
 
-![test moteur](captures/test_moteur.png)
+![Test moteur](captures/test_moteur.png)
 
 J'ai ajouté les 3 stratégies du cours qui manquaient : RANDOM, TESTER et JOSS (voir le détail dans la section Stratégies).
 
@@ -56,11 +60,11 @@ J'ai lancé le tournoi avec les 5 stratégies et une graine 42. Je l'ai lancé d
 TIT-FOR-TAT gagne-t-il ? 
 Non, il finit 3e. C'est ALL-D qui gagne, TESTER est 2e juste devant TFT (22 points d'écart, presque rien).
 
-![détail étape 1](captures/detail_etape1.png)
+![Résultat match par match](captures/detail_etape1.png)
 
 En regardant les scores match par match, je vois qu'ALL-D gagne surtout grâce à RANDOM : contre les autres elle fait environ 2 par tour, mais contre RANDOM elle prend 5 une fois sur deux (3458 points contre RANDOM, environ 2000 contre chacun des autres). Mon hypothèse : sans RANDOM, ALL-D ne gagnerait plus.
 
-La différence avec 1980 vient de la population. Ici TFT est la seule stratégie qui ne trahit jamais en premier, donc elle n'a personne avec qui coopérer à 3 par tour. En plus, TESTER et JOSS la piègent dans des échanges de représailles : contre TESTER elle fait 2500 au lieu de 3000, parce que TESTER commence par D, TFT riposte, et les deux se renvoient la trahison toute la partie. En 1980 il y avait 14 programmes, et beaucoup étaient "gentils", c'est avec eux que TFT faisait ses points. C'est ce que dit le cours : TFT marche seulement si elle rencontre assez de stratégies qui pensent comme elle.
+La différence avec 1980 vient de la population. Ici TFT est la seule stratégie qui ne trahit jamais en premier, donc elle n'a personne avec qui coopérer à 3 par tour. En plus, TESTER et JOSS la piègent dans des échanges de représailles : contre TESTER elle fait 2500 au lieu de 3000, parce que TESTER commence par D, TFT riposte, et les deux se renvoient la trahison toute la partie. En 1980 il y avait 14 programmes, et beaucoup étaient "gentils" (ils ne trahissent jamais en premier), c'est avec eux que TFT faisait ses points. C'est ce que dit le cours : TFT marche seulement si elle rencontre assez de stratégies qui pensent comme elle.
 
 ### Dimanche 15/11
 
@@ -68,8 +72,8 @@ Pour vérifier, j'ai relancé le tournoi sans RANDOM (ligne en commentaire dans 
 
 ![sans RANDOM](captures/etape1_sansrandom.png)
 
+#### Etape 2
 
 ## Impasses
 
 Les scores sont rangés par nom de stratégie, donc si je mets deux fois la même stratégie dans un tournoi, leurs scores s'additionnent (pas grave pour l'instant, j'ai une seule instance de chaque).
-Tester le tournoi de base sans RANDOM pour confirmer que ALL-D ne gagne plus ? Hypothèse confirmé plus haut.
