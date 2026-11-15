@@ -151,6 +151,10 @@ Donc ma prédiction était juste sur le fond : aucune stratégie ne compte les t
  
 Sur la récurrence à rebours : elle ne change rien ici, parce que mes stratégies ne raisonnent pas sur la fin de la partie. Même avec 200 tours connus, aucune ne trahissait au dernier tour. L'horizon inconnu compte pour des joueurs qui calculent, pas pour des règles fixes comme les miennes.
 
+### Conclusion
+ 
+Le classement dépend surtout de qui est dans le tournoi. À l'étape 1, ALL-D gagne grâce à RANDOM, et sans RANDOM c'est TFT. À l'étape 2, avec deux gentilles en plus, c'est GRIM qui gagne. Avec le bruit, les stratégies qui reviennent coopérer se font exploiter, et ALL-D repasse 1re. Et avec l'horizon inconnu, le hasard sur la durée des parties pèse plus que les stratégies elles-mêmes. TFT n'est donc pas la meilleure stratégie dans l'absolu, comme le dit le cours : ça dépend des adversaires et des règles.
+
 ## Impasses
 
 Les scores sont rangés par nom de stratégie, donc si je mets deux fois la même stratégie dans un tournoi, leurs scores s'additionnent (pas grave pour l'instant, j'ai une seule instance de chaque).
