@@ -12,8 +12,13 @@ GAINS = {
 }
 
 
-def partie(s1, s2, nb_tours, rng):
-    """Joue une partie de nb_tours entre s1 et s2. Renvoie (score s1, score s2)."""
+def inverser(coup):
+    return "D" if coup == "C" else "C"
+
+
+def partie(s1, s2, nb_tours, rng, bruit=0):
+    """Joue une partie de nb_tours entre s1 et s2. Renvoie (score s1, score s2).
+    bruit : probabilité qu'un coup soit inversé (0 = pas de bruit)."""
     s1.reset()
     s2.reset()
     coups1, coups2 = [], []
@@ -21,6 +26,12 @@ def partie(s1, s2, nb_tours, rng):
     for _ in range(nb_tours):
         c1 = s1.jouer(coups1, coups2, rng)
         c2 = s2.jouer(coups2, coups1, rng)
+        # bruit : chaque coup peut être inversé, les deux joueurs voient le coup inversé
+        if bruit > 0:
+            if rng.random() < bruit:
+                c1 = inverser(c1)
+            if rng.random() < bruit:
+                c2 = inverser(c2)
         g1, g2 = GAINS[(c1, c2)]
         score1 += g1
         score2 += g2
@@ -29,14 +40,14 @@ def partie(s1, s2, nb_tours, rng):
     return score1, score2
 
 
-def tournoi(strategies, nb_parties=5, nb_tours=200, graine=42):
+def tournoi(strategies, nb_parties=5, nb_tours=200, graine=42, bruit=0):
     """Chaque stratégie affronte chaque autre (sans auto-affrontement).
     Renvoie un dict {nom: score total}."""
     rng = random.Random(graine)
     scores = {s.nom: 0 for s in strategies}
     for s1, s2 in combinations(strategies, 2):
         for _ in range(nb_parties):
-            g1, g2 = partie(s1, s2, nb_tours, rng)
+            g1, g2 = partie(s1, s2, nb_tours, rng, bruit)
             scores[s1.nom] += g1
             scores[s2.nom] += g2
     return scores
